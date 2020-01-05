@@ -6,8 +6,12 @@ stage('cloning repo'){
   checkout scm
 }
 stage('Testing')
-{
-sh 'ls -la'
-echo "Building application ${appName} with version ${major_version}"
-}
+  {
+    sh 'mvn clean test'
+  }
+stage('Build')
+  {
+    sh 'mvn clean install'
+  }
+  
 }
